@@ -40,6 +40,7 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+       
     }
     /*公共样式--开始*/
     html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
@@ -48,7 +49,8 @@
     }
     *{box-sizing: border-box;}
     html, body {
-        min-height: 100%;
+        width: 100%;
+        height: 100vh;
     }
 
     body {
