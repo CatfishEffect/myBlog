@@ -1,15 +1,16 @@
 <template>
     <div id="app">
-
-        <header></header>
-        <section class="content">
-            <aside>
-                <BlogAside></BlogAside>
-            </aside>
-            <main>
-                <router-view/>
-            </main>
-        </section>
+        <div>
+          <header></header>
+          <section class="content">
+              <aside>
+                  <BlogAside></BlogAside>
+              </aside>
+              <main>
+                  <router-view/>
+              </main>
+          </section>
+        </div>
     </div>
 </template>
 
@@ -32,6 +33,31 @@
     }
 </script>
 
+<style scoped>
+    #app{
+      width: 100%;
+      height: 100%;
+
+    }
+    #app>div{
+      margin: 0 auto;
+      width: 1000px;
+    }
+
+    .content{
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    .content>aside{
+        width: 250px;
+    }
+    .content>main{
+        width: calc( 100% - 250px );
+    }
+</style>
+
 <style>
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -39,11 +65,9 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
-       
     }
     /*公共样式--开始*/
-    html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    html, body,menu, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
         margin: 0;
         padding: 0;
     }
@@ -88,14 +112,13 @@
         resize: none;
         overflow: auto;
     }
-    .content{
-        display: flex;
-        flex-flow: row nowrap;
-    }
-    .content>aside{
-        width: 300px;
-    }
-    .content>main{
-        width: calc( 100% - 300px );
+
+    /*  */
+    .icon{
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
     }
 </style>

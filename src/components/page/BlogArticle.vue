@@ -13,14 +13,33 @@
                 {{item.content}}
             </p>
 
+            <!-- 查看更多 -->
+            <div align="center" class="more">
+               <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </div>
+
             <!-- 分割线 -->
             <div class="line"></div>
 
             <!-- 文章底部功能 -->
             <footer>
-                <div>转发</div>
-                <div>喜欢</div>
-                <div>评论</div>
+                <div>
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-zhuanfa"></use>
+                  </svg>
+                </div>
+                <div>
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xihuan"></use>
+                  </svg>
+                </div>
+                <div>
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-pinglun"></use>
+                  </svg>
+                </div>
             </footer>
         </article>
     </div>
@@ -63,14 +82,20 @@
 </script>
 
 <style scoped>
+
+    /* 图标样式 */
+    .icon {
+      color: #333;
+    }
+    .article>article:first-child{
+       margin-top: 0;
+    }
     .article>article{
-        max-width: 1000px;
-        margin-top: 20px; 
-        border: 1px solid gray;
+        margin-top: 20px;
         background-color: #fff;
         box-sizing: border-box;
         padding: 30px 30px 30px 50px;
-
+        box-shadow: 0 3px 3px rgba(128, 128, 128, .3);
     }
     .article h3{
         display: inline-block;
@@ -91,5 +116,22 @@
     }
     .article footer>div:last-child{
         border-left: none;
+    }
+
+    .more{
+      margin-top: 30px;
+    }
+
+    .more .icon{
+      color: rgba(128, 128, 128, .3);
+    }
+
+    .line{
+      margin: 20px 0;
+      width: 750px;
+      height: 1px;
+      background-color: rgba(128, 128, 128, .3);
+      position: relative;
+      margin-left: -50px;
     }
 </style>
