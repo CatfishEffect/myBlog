@@ -7,7 +7,9 @@
                   <BlogAside></BlogAside>
               </aside>
               <main>
-                  <router-view/>
+                  <transition name="fade" mode="out-in">
+                    <router-view/>  
+                  </transition>
               </main>
           </section>
         </div>
@@ -34,6 +36,9 @@
 </script>
 
 <style scoped>
+    .fade-enter-active, .fade-leave-active {
+        transition: all .3s linear;
+    }
     #app{
       width: 100%;
       height: 100%;
@@ -54,7 +59,8 @@
         width: 250px;
     }
     .content>main{
-        width: calc( 100% - 250px );
+        margin-left: 20px;
+        width: calc( 100% - 270px );
     }
 </style>
 

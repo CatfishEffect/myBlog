@@ -94,7 +94,7 @@
         margin-top: 20px;
         background-color: #fff;
         box-sizing: border-box;
-        padding: 30px 30px 30px 50px;
+        padding: 30px;
         box-shadow: 0 3px 3px rgba(128, 128, 128, .3);
     }
     .article h3{
@@ -128,10 +128,9 @@
 
     .line{
       margin: 20px 0;
-      width: 750px;
       height: 1px;
       background-color: rgba(128, 128, 128, .3);
       position: relative;
-      margin-left: -50px;
+    
     }
 </style>
