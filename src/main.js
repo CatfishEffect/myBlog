@@ -4,7 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+router.beforeEach((to, from, next) => {
+  console.log(111);
+  if( to.name == 'share' ){
+    console.log(222);
+  };
+  next();
+});
+
 
 /* eslint-disable no-new */
 new Vue({
