@@ -56,11 +56,11 @@
       flex-flow: row nowrap;
     }
     .content>aside{
-        width: 250px;
+      width: 250px;
     }
     .content>main{
-        margin-left: 20px;
-        width: calc( 100% - 270px );
+      margin-left: 20px;
+      width: calc( 100% - 270px );
     }
 </style>
 

@@ -128,9 +128,9 @@
 
     .line{
       margin: 20px 0;
+      width: 100%;
       height: 1px;
       background-color: rgba(128, 128, 128, .3);
       position: relative;
-    
     }
 </style>
