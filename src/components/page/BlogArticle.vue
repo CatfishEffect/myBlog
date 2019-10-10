@@ -50,33 +50,22 @@
         name: "BlogArticle",
         data() {
             return {
-                articleList: [
-                    {
-                        id: 1,
-                        title: '如何成为全栈工程师',
-                        date: '2019-7-23',
-                        content: '全栈工程师，也叫全端工程师，英文Full Stack developer，是指掌握多种技能，并能利用多种技能独立完成产品的人。'
-                    },
-                    {
-                        id: 2,
-                        title: '如何成为全栈工程师',
-                        date: '2019-7-23',
-                        content: '全栈工程师，也叫全端工程师，英文Full Stack developer，是指掌握多种技能，并能利用多种技能独立完成产品的人。'
-                    },
-                    {
-                        id: 3,
-                        title: '如何成为全栈工程师',
-                        date: '2019-7-23',
-                        content: '全栈工程师，也叫全端工程师，英文Full Stack developer，是指掌握多种技能，并能利用多种技能独立完成产品的人。'
-                    },
-                    {
-                        id: 4,
-                        title: '如何成为全栈工程师',
-                        date: '2019-7-23',
-                        content: '全栈工程师，也叫全端工程师，英文Full Stack developer，是指掌握多种技能，并能利用多种技能独立完成产品的人。'
-                    },
-                ]
+                articleList: []
             }
+        },
+        methods: {
+          getData() {
+            this.$axios.get(this.$api.getArticleData).then((result) => {
+              console.log(result);
+              this.articleList = result.data;
+            }).catch((err) => {
+              console.log(err);
+
+            });
+          }
+        },
+        created () {
+          this.getData();
         }
     }
 </script>

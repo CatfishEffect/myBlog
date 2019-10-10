@@ -7,7 +7,7 @@
         <!-- 图片分享 -->
         <div v-for="(item,index) in article" :key="index">
           <div>
-            <img :src="item.image" alt="item.title">
+            <img :src="$url+item.images" alt="item.content">
           </div>
           <h5>{{item.title}}</h5>
         </div>
@@ -20,44 +20,22 @@
         name: "BlogShare",
         data(){
           return {
-            article: [
-              {
-                id:1,
-                title: '鬼刀漫画图-back2',
-                image: './../../../static/image/back2.jpg'
-              },
-              {
-                id:2,
-                title: '鬼刀漫画图-cute',
-                image: './../../../static/image/cute.jpg'
-              },
-              {
-                id:3,
-                title: '鬼刀漫画图-fly',
-                image: './../../../static/image/fly.jpg'
-              },
-              {
-                id:4,
-                title: '鬼刀漫画图-lay',
-                image: './../../../static/image/lay.png'
-              },
-              {
-                id:5,
-                title: '鬼刀漫画图-look',
-                image: './../../../static/image/look.jpg'
-              },
-              {
-                id:6,
-                title: '鬼刀漫画图-shy2',
-                image: './../../../static/image/shy2.jpg'
-              },
-              {
-                id:7,
-                title: '鬼刀漫画图-sleep',
-                image: './../../../static/image/sleep.jpg'
-              }
-            ]
+            article: []
           }
+        },
+        methods: {
+          getdata() {
+            this.$axios.get(this.$api.getShareData).then((result) => {
+              console.log(result);
+              this.article = result.data;
+              console.log('article',this.article);
+            }).catch((err) => {
+              console.log(err);
+            });
+          }
+        },
+        created () {
+          this.getdata();
         }
     }
 </script>

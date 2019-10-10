@@ -2,7 +2,7 @@
     <div align="left">
         <header class="header" >
             <img src="" alt="">
-            <h2>李静</h2>
+            <h2>{{personalInfo.name}}</h2>
             <div>
                 <span>web前端</span>
                 <span>| 24岁</span>
@@ -11,7 +11,7 @@
         </header>
         <section class="aboutMe">
             <h3>
-                <span>关于我</span>       
+                <span>关于我</span>
                 <span>About Me</span>
             </h3>
             <div class="content">
@@ -19,37 +19,40 @@
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-dianhua"></use>
                     </svg>
-                    <span>173-6487-1109</span>
+                    <span>{{personalInfo.mobile}}</span>
                 </div>
                 <div>
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-qq"></use>
                     </svg>
-                    <span>346519079</span>
+                    <span>{{personalInfo.QQ}}</span>
                 </div>
                 <div>
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-weixin"></use>
                     </svg>
-                    <span>Butterfly-1995lj</span>
+                    <span>{{personalInfo.weChat}}</span>
                 </div>
                 <div>
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-tubiao209"></use>
                     </svg>
-                    <span>346519079@qq.com</span>
+                    <span>{{personalInfo.email}}</span>
                 </div>
             </div>
         </section>
         <div class="line"></div>
         <section class="aboutMe">
             <h3>
-                <span>教育信息</span>       
+                <span>教育信息</span>
                 <span>Educational Information</span>
             </h3>
             <div>
-                <span></span>
-                <span>本科</span>
+                <span>{{educationList.school}}</span>
+                <span>{{educationList.profession}}</span>
+                <span>{{educationList.education}}</span>
+                <span>{{educationList.admissionTime}}</span>
+                <span>{{educationList.graduationTime}}</span>
 
             </div>
         </section>
@@ -57,29 +60,36 @@
         <section class="aboutMe">
             <!-- workExperience -->
             <h3>
-                <span>工作经历</span>       
+                <span>工作经历</span>
                 <span>Work Experience</span>
             </h3>
-            <div class="workExperienceContent">
-                <div>
-                    <span>{{personalInfo.companyName}}</span>
-                    <span>{{personalInfo.workDate}}</span>
-                    <span>{{personalInfo.position}}</span>
-                </div>
-                <p>
-                    我所任职的是杭州惊叹号科技有限公司的开发部，进入公司参与公司的宠物平台项目，负责顾客模块的开发工作，后续又参与完成了该项目的微信小程序版本的开发
-                </p>
+            <div class="workExperienceContent" v-for="(item,index) in data" :key="index">
+               <div>
+                  <div>
+                    <span>{{item.companyName}}</span>
+                    <span>{{item.entryTime}} ~ {{item.separationTime}}</span>
+                    <span>{{item.department}}</span>
+                  </div>
+                  <p>
+                    {{item.detailsIntroduction}}
+                  </p>
+               </div>
             </div>
         </section>
         <div class="line"></div>
         <section class="aboutMe">
             <h3>
-                <span>个人技能</span>       
+                <span>个人技能</span>
                 <span>Personal Skills</span>
             </h3>
             <div class="skillsContent">
                 <ul>
-                    <li v-for="item in workingAbility" :key="item.id">{{item.skill}}</li>
+                    <li v-for="item in workingAbility" :key="item.id">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-jian"></use>
+                        </svg>
+                        <span>{{item}}</span>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -87,14 +97,14 @@
         <div class="line"></div>
         <section class="aboutMe">
             <h3>
-                <span>项目经验</span>       
+                <span>项目经验</span>
                 <span>Work Experience</span>
             </h3>
         </section>
         <div class="line"></div>
         <section class="aboutMe">
             <h3>
-                <span>自我评价</span>       
+                <span>自我评价</span>
                 <span>Self-Evaluation</span>
             </h3>
         </section>
@@ -106,46 +116,36 @@
         name: "BlogAbout",
         data () {
             return {
-                personalInfo: {
-                    workDate: '2018-11~2019-11',
-                    companyName: '成都百佳联科技有限公司',
-                    position: '前端工程师'
-                },
-                workingAbility: [
-                    {
-                        id: 1,
-                        skill: '熟练掌握HTML5，CSS3（flex布局）和JavaScript，熟悉ES6'
-                    },
-                    {
-                        id: 2,
-                        skill: '可以使用Vue完成项目，了解react'
-                    },
-                    {
-                        id: 3,
-                        skill: '熟悉微信小程序开发'
-                    },
-                    {
-                        id: 4,
-                        skill: '熟练使用JQuery和Bootstrap进行响应式开发'
-                    },
-                    {
-                        id: 5,
-                        skill: '熟悉Ajax数据交互，完成页面数据异步请求'
-                    },
-                    {
-                        id: 6,
-                        skill: '熟练使用Element-UI，Muse-UI等UI框架和Echarts等插件'
-                    },
-                    {
-                        id: 7,
-                        skill: '熟悉nodejs（能使用express搭建web服务）'
-                    },
-                    {
-                        id: 8,
-                        skill: '熟练使用Git版本控制工具，Gulp自动化构建工具'
-                    }
-                ]
+                data: '',
+                personalInfo: '',
+                educationList: '',
+                workingAbility: []
             }
+        },
+        methods: {
+          getData() {
+            this.$axios.get(this.$api.getAboutData).then((result) => {
+              console.log(result);
+              if(result.data){
+
+                this.personalInfo = result.data;
+                this.data = result.data.company;
+                this.workingAbility = result.data.skills;
+                if ( result.data.evaluation_content ) {
+                  this.educationList = result.data.evaluation_content;
+                }
+              }
+
+
+
+            }).catch((err) => {
+              console.log(err);
+
+            });
+          }
+        },
+        created() {
+          this.getData();
         }
     }
 </script>
@@ -167,7 +167,7 @@
 .header>h2{
     margin-top: 100px;
 }
- 
+
 .header>h2,.header>div{
     margin-left: 70%;
 }
@@ -198,6 +198,10 @@
     margin: 20px 0;
 }
 
+.workExperienceContent p{
+  margin-top: 20px;
+}
+
 .workExperienceContent span:first-child{
     border-right: 1px solid #999;
     padding-right: 20px;
@@ -217,7 +221,8 @@
     margin: 20px 0;
 }
 .skillsContent li{
-    margin-top: 5px;
+    margin-top: 15px;
+    margin-left: 30px;
 }
 
 section{

@@ -1,28 +1,33 @@
 <template>
-    <div id="app">
-        <div>
-          <header></header>
-          <section class="content">
-              <aside>
-                  <BlogAside></BlogAside>
-              </aside>
-              <main>
-                  <transition name="fade" mode="out-in">
-                    <router-view/>  
-                  </transition>
-              </main>
-          </section>
+    <div>
+        <div id="app">
+            <div>
+                <header></header>
+                <section class="content">
+                    <div></div>
+                    <aside>
+                        <BlogAside></BlogAside>
+                    </aside>
+                    <main>
+                        <transition name="fade" mode="out-in">
+                            <router-view/>
+                        </transition>
+                    </main>
+                </section>
+            </div>
         </div>
+        <BlogFooter/>
     </div>
+
 </template>
 
 <script>
 
     //组件懒加载
-    const BlogAside =()=>import('./components/structure/BlogAside');
-    const BlogMain =()=>import('./components/structure/BlogMain');
-    const BlogHeader =()=>import('./components/structure/BlogHeader');
-    const BlogFooter =()=>import('./components/structure/BlogFooter');
+    const BlogAside = () => import('./components/structure/BlogAside');
+    const BlogMain = () => import('./components/structure/BlogMain');
+    const BlogHeader = () => import('./components/structure/BlogHeader');
+    const BlogFooter = () => import('./components/structure/BlogFooter');
 
     export default {
         name: 'App',
@@ -36,31 +41,44 @@
 </script>
 
 <style scoped>
+    .fade-enter-active, .fade-leave-active{
+        transition: all 1s;
+    }
     .fade-enter-active, .fade-leave-active {
         transition: all .3s linear;
     }
-    #app{
-      width: 100%;
-      height: 100%;
+
+    #app {
+        width: 100%;
+        height: 100%;
 
     }
-    #app>div{
-      margin: 0 auto;
-      width: 1000px;
+
+    #app > div {
+        margin: 0 auto;
+        width: 1000px;
     }
 
-    .content{
-      margin-top: 20px;
-      width: 100%;
-      display: flex;
-      flex-flow: row nowrap;
+    .content {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
     }
-    .content>aside{
-      width: 250px;
+
+    .content>div{
+        width: 250px;
+        height: 800px;
     }
-    .content>main{
-      margin-left: 20px;
-      width: calc( 100% - 270px );
+    .content > aside {
+        position: fixed;
+        width: 250px;
+        height: 800px;
+    }
+
+    .content > main {
+        margin-left: 20px;
+        width: calc(100% - 270px);
     }
 </style>
 
@@ -72,25 +90,34 @@
         text-align: center;
         color: #2c3e50;
     }
+
     /*公共样式--开始*/
-    html, body,menu, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    html, body, menu, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
         margin: 0;
         padding: 0;
     }
-    *{box-sizing: border-box;}
+
+    * {
+        box-sizing: border-box;
+    }
+
     html, body {
         width: 100%;
         height: 100vh;
     }
 
     body {
-        font-family: "Microsoft YaHei",serif;
-        font-size:14px;
-        color:#333;
+        font-family: "Microsoft YaHei", serif;
+        font-size: 14px;
+        color: #333;
         background-color: #f5f5f5;
     }
-    h1, h2, h3, h4, h5, h6{font-weight:normal;}
-    ul,ol {
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: normal;
+    }
+
+    ul, ol {
         list-style: none;
     }
 
@@ -120,11 +147,11 @@
     }
 
     /*  */
-    .icon{
-      width: 1.2em;
-      height: 1.2em;
-      vertical-align: -0.15em;
-      fill: currentColor;
-      overflow: hidden;
+    .icon {
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
     }
 </style>

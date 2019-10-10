@@ -6,6 +6,26 @@ import router from './router'
 
 Vue.config.productionTip = false;
 
+//定义默认地址
+Vue.prototype.$url = 'http://www.blog.php/uploads/'
+
+//api
+import api from './assets/api/api'
+Vue.prototype.$api = api;
+
+//axios
+//axios.defaults.baseURL = 'http://www.blog.php'
+import axios from 'axios'
+Vue.prototype.$axios = axios;
+
+
+//qs
+import qs from 'qs';
+Vue.prototype.$qs = qs;
+
+
+
+
 router.beforeEach((to, from, next) => {
   console.log(111);
   if( to.name == 'share' ){
