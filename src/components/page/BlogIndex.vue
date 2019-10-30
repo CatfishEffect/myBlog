@@ -4,13 +4,13 @@
           <div></div>
           <div class="content-bar">
             <div>
-              <h3>文集</h3>
+              <span>文集</span>
             </div>
             <div>
-              <h3>分享</h3>
+              <span>分享</span>
             </div>
             <div>
-              <h3>关于</h3>
+              <span>关于</span>
             </div>
           </div>
         </section>
